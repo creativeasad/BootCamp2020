@@ -1,0 +1,23 @@
+name: Boot Camp 2020
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Installing Node JS 
+      uses: actions/setup-node@v2-beta
+      with:
+        node-version: 12 
+    - name: Installing surge
+      run: npm --globally surge
+    - name: deploying Surge
+      run: surge ./ sasadaliz.surge.sh --token  $ {{ secrets.SURGE_TOKEN }}
