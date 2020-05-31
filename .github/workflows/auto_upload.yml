@@ -18,6 +18,6 @@ jobs:
       with:
         node-version: 12 
     - name: Installing surge
-      run: npm --global surge
+      run: npm install --global surge
     - name: deploying Surge
       run: surge ./ sasadaliz.surge.sh --token  $ {{ secrets.SURGE_TOKEN }}
